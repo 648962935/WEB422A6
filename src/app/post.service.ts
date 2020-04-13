@@ -14,7 +14,7 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPosts(page,tag,category): Observable<BlogPost[]>{
-    let url = `http://localhost:8080/api/posts?page=${page}&perPage=${perPage}`
+    let url = `https://nameless-caverns-77050.herokuapp.com/api/posts?page=${page}&perPage=${perPage}`
     if(tag) url += `&tag=${tag}`;
     if(category) url += `&category=${category}`
     
@@ -22,14 +22,33 @@ export class PostService {
   }
 
   getPostById(id): Observable<BlogPost>{
-    return this.http.get<BlogPost>(`http://localhost:8080/api/posts/${id}`);
+    return this.http.get<BlogPost>(`https://nameless-caverns-77050.herokuapp.com/api/posts/${id}`);
   }
 
   getCategories(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/api/categories/');
+    return this.http.get<any>('https://nameless-caverns-77050.herokuapp.com/api/categories/');
   } 
 
   getTags(): Observable<string[]>{
-    return this.http.get<string[]>('http://localhost:8080/api/tags/');
+    return this.http.get<string[]>('https://nameless-caverns-77050.herokuapp.com/api/tags/');
   } 
+
+  //Assignment 6
+
+  getAllPosts():Observable<BlogPost[]>{
+    return this.http.get<BlogPost[]>('https://nameless-caverns-77050.herokuapp.com/api/posts?page=1&perPage=' + Number.MAX_SAFE_INTEGER);
+  }
+
+  newPost(data: BlogPost): Observable<any>{
+    return this.http.post<any>(`https://nameless-caverns-77050.herokuapp.com/api/posts`, data);
+  }
+
+  updatePostById(id: string, data: BlogPost): Observable<any>{
+    return this.http.put<any>(`https://nameless-caverns-77050.herokuapp.com/api/posts/${id}`, data);
+  }
+
+  deletePostById(id: string): Observable<any>{
+    return this.http.delete<any>(`https://nameless-caverns-77050.herokuapp.com/api/posts/${id}`);
+  }
+
 }

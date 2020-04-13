@@ -1,0 +1,41 @@
+<br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" [(ngModel)]="blogPost.title">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Featured Image (URL)</label>
+                        <input type="text" class="form-control" name="featured" [(ngModel)]="blogPost.featuredImage">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Post</label>
+                        <textarea class="form-control" style="min-height:200px" name="post" [(ngModel)]="blogPost.post" name="post" id="post"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" class="form-control" name="category" [(ngModel)]="blogPost.category">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tags</label>
+                        <textarea class="form-control" [(ngModel)]="blogPost.tags" name="tags" id="tags"></textarea>
+                    </div>
+
+                    <div class="pull-right">
+                        <button class="btn btn-danger btn-sm" (click)="deletePost()">Delete Post</button> &nbsp; 
+                        <button type="submit" class="btn btn-success btn-sm" (click)="updatePost()">Update Post</button>
+                    </div> 
+
+                </form>
+            </div>
+        </div>
+    </div>
+<br />
